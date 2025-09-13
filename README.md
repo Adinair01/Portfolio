@@ -14,8 +14,3 @@ It showcases my projects, skills, and achievements in a simple and elegant way.
 - Tailwind CSS
 - TypeScript
 - ShadCN/UI Components
-
-## 📬 Contact
-If you’d like to connect, feel free to reach out:
-- [LinkedIn](https://www.linkedin.com/in/adinair01)
-- [GitHub](https://github.com/Adinair01)
