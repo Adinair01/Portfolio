@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useEffect } from "react"
 
 interface ContactPopupProps {
   isOpen: boolean
@@ -10,6 +11,19 @@ interface ContactPopupProps {
 }
 
 export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
   return (
     <AnimatePresence>
       {isOpen && (
@@ -20,6 +34,15 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80]"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: '100vw',
+              height: '100vh'
+            }}
             onClick={onClose}
           />
 
@@ -28,9 +51,17 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[85] w-[90vw] max-w-md"
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[85] w-[90vw] max-w-md mx-auto"
+            style={{ 
+              position: 'fixed',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              maxHeight: '90vh',
+              overflowY: 'auto'
+            }}
           >
-            <div className="bg-gray-900/95 backdrop-blur-md border border-gray-700 rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <div className="bg-gray-900/95 backdrop-blur-md border border-gray-700 rounded-2xl p-6 sm:p-8 shadow-2xl w-full max-w-full">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-white">Get In Touch</h3>
                 <Button
