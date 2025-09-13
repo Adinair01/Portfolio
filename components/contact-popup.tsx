@@ -27,22 +27,24 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div 
+          className="fixed inset-0 z-[80] flex items-center justify-center p-4"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh'
+          }}
+        >
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80]"
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              width: '100vw',
-              height: '100vh'
-            }}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -51,17 +53,13 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[85] w-[90vw] max-w-md mx-auto"
+            className="relative z-[85] w-full max-w-md mx-auto"
             style={{ 
-              position: 'fixed',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              maxHeight: '90vh',
+              maxHeight: '80vh',
               overflowY: 'auto'
             }}
           >
-            <div className="bg-gray-900/95 backdrop-blur-md border border-gray-700 rounded-2xl p-6 sm:p-8 shadow-2xl w-full max-w-full">
+            <div className="bg-gray-900/95 backdrop-blur-md border border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl w-full max-w-full relative">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-white">Get In Touch</h3>
                 <Button
@@ -106,7 +104,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
               </div>
             </div>
           </motion.div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   )
