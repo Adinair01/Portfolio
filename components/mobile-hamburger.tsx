@@ -42,7 +42,7 @@ const socialLinks = [
   {
     name: "Resume",
     icon: FileText,
-    url: "https://drive.google.com/file/d/1---vh4Yva-k9QjOp8xYBdRZkumlx2ilU/view?usp=sharing",
+    url: "https://drive.google.com/file/d/1wCxrqx-OynOyg2VxaoWGUZRSINncExWC/view?usp=sharing",
     color: "hover:bg-green-600",
     bgColor: "bg-green-700",
   },
