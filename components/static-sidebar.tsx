@@ -21,9 +21,9 @@ const socialLinks = [
     bgColor: "bg-blue-700",
   },
   {
-    name: "LeetCode",
+    name: "LeetCode Grinding",
     icon: Code,
-    url: "https://leetcode.com/u/adityanair01/",
+    url: "",
     color: "hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/20",
     bgColor: "bg-orange-700",
   },
