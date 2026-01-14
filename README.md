@@ -3,7 +3,7 @@
       Portfolio
 ======================== -->
 
-# Aditya Nair — Developer Portfolio
+# Aditya Nair - Developer Portfolio
 
 I’m **Aditya Nair**, a developer who builds clean, fast, and scalable web products.  
 I’m strongest in **frontend engineering**, and I’m actively leveling up in **backend development** by building production-style systems (APIs, auth, databases, and AI-assisted workflows).
@@ -14,24 +14,20 @@ I care about:
 - **Clean architecture** and maintainable code
 - **Real-world engineering** (rate limiting, logging, DB design, deploy-ready setups)
 
----
-
 ## What I’m Good At
 
 ### Frontend
-- Building responsive interfaces with **React + Next.js**
+- Building responsive interfaces with **React.js**
 - Styling systems with **Tailwind CSS**
-- Component-driven UI using **shadcn/ui**
 - Motion + micro-interactions for premium feel
 
 ### Backend (Growing Strong)
-- Designing REST APIs with **Node.js + Express**
+- Designing REST APIs with **Node.js + Express.js**
 - Authentication & authorization concepts (JWT/session-based patterns)
-- PostgreSQL/Supabase integration and schema-first thinking
+- PostgreSQL/Supabase and MySql integration and schema-first thinking
 - Building practical systems: rate limiting, validation, error handling, and API structure
 
 ### Problem Solving
-- Competitive programming mindset: consistency + optimization
 - Strong focus on writing logic that’s easy to understand and extend
 
 ---
