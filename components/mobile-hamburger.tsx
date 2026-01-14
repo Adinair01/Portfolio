@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Github, Linkedin, Mail, FileText, Instagram, Code } from "lucide-react"
+import { Menu, X, Github, Linkedin, Mail, FileText, Instagram, Code, ChefHat } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface MobileHamburgerProps {
@@ -26,11 +26,18 @@ const socialLinks = [
     bgColor: "bg-blue-700",
   },
   {
-    name: "LeetCode Grinding",
+    name: "LeetCode",
     icon: Code,
-    url: "",
+    url: "https://leetcode.com/u/adiii01/",
     color: "hover:bg-orange-600",
     bgColor: "bg-orange-700",
+  },
+  {
+    name: "CodeChef",
+    icon: ChefHat,
+    url: "https://www.codechef.com/users/adiop",
+    color: "hover:bg-amber-700",
+    bgColor: "bg-amber-800",
   },
   {
     name: "Email",
@@ -42,7 +49,7 @@ const socialLinks = [
   {
     name: "Resume",
     icon: FileText,
-    url: "https://drive.google.com/file/d/1wCxrqx-OynOyg2VxaoWGUZRSINncExWC/view?usp=sharing",
+    url: "https://drive.google.com/file/d/12tqq_hRq07w4no1SMmzQktVh82Ua6D0R/view?usp=sharing",
     color: "hover:bg-green-600",
     bgColor: "bg-green-700",
   },
@@ -66,6 +73,7 @@ const navigationItems = [
 
 export default function MobileHamburger({ side, onToggle }: MobileHamburgerProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isEmailOpen, setIsEmailOpen] = useState(false)
 
   const toggleMenu = () => {
     const newState = !isOpen
@@ -143,6 +151,12 @@ export default function MobileHamburger({ side, onToggle }: MobileHamburgerProps
                         className={`flex items-center gap-4 p-4 rounded-xl ${link.bgColor}/50 ${link.color} transition-all duration-300 group`}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
+                        onClick={(e) => {
+                          if (link.name === "Email") {
+                            e.preventDefault()
+                            setIsEmailOpen(true)
+                          }
+                        }}
                       >
                         <div className={`p-3 rounded-lg ${link.bgColor} group-hover:scale-110 transition-transform`}>
                           <link.icon className="w-5 h-5 text-white" />
@@ -178,6 +192,28 @@ export default function MobileHamburger({ side, onToggle }: MobileHamburgerProps
           </motion.div>
         )}
       </AnimatePresence>
+
+      {isEmailOpen && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/60 backdrop-blur-sm md:hidden">
+          <div className="bg-gray-900 border border-cyan-500/60 rounded-2xl p-6 w-[90%] max-w-sm shadow-2xl">
+            <h3 className="text-xl font-semibold text-white mb-2">Email</h3>
+            <p className="text-gray-300 mb-4 break-all">adityanair5002@gmail.com</p>
+            <div className="flex justify-end">
+              <Button
+                size="sm"
+                onClick={() => {
+                  if (typeof window !== "undefined" && navigator?.clipboard) {
+                    navigator.clipboard.writeText("adityanair5002@gmail.com").catch(() => {})
+                  }
+                  setIsEmailOpen(false)
+                }}
+              >
+                OK
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
