@@ -236,6 +236,27 @@
 
 html {
   scroll-behavior: smooth;
+  /* Offset anchored sections so headings clear the fixed top nav */
+  scroll-padding-top: 5rem;
+}
+
+/* Make in-page nav (scrollIntoView) land below the fixed nav too */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Guard against any horizontal overflow on small screens */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Custom scrollbar */
