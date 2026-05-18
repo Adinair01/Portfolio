@@ -12,6 +12,7 @@ import ProjectsSection from "@/components/projects-section"
 import ExperienceSection from "@/components/experience-section"
 import ContactSection from "@/components/contact-section"
 import AchievementsSection from "@/components/achievements-section"
+import BuiltForClientsSection from "@/components/built-for-clients-section"
 import Globe3D from "@/components/globe-3d"
 import MobileHamburger from "@/components/mobile-hamburger"
 import MobileNotifications from "@/components/mobile-notifications"
@@ -49,6 +50,7 @@ export default function Portfolio() {
                 { name: "Skills", href: "#skills" },
                 { name: "Experience", href: "#experience" },
                 { name: "Projects", href: "#projects" },
+                { name: "Clients", href: "#clients" },
                 { name: "Achievements", href: "#achievements" },
                 { name: "Contact", href: "#contact" },
               ].map((item) => (
@@ -108,7 +110,7 @@ export default function Portfolio() {
                 className="text-sm sm:text-lg py-2 px-3 sm:px-4 bg-cyan-500/20 text-cyan-300 border-cyan-500/30 glow-text-subtle"
               >
                 <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                SRM University - CGPA 9.24
+                SRM University - CGPA 9.18
               </Badge>
               <Badge
                 variant="secondary"
@@ -289,6 +291,8 @@ export default function Portfolio() {
         <ExperienceSection />
         {/* Projects Section */}
         <ProjectsSection />
+        {/* Built for Clients Section */}
+        <BuiltForClientsSection />
         {/* Achievements Section */}
         <AchievementsSection />
         {/* Contact Section with Globe */}

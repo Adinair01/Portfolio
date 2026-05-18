@@ -67,6 +67,7 @@ const navigationItems = [
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
+  { name: "Clients", href: "#clients" },
   { name: "Achievements", href: "#achievements" },
   { name: "Contact", href: "#contact" },
 ]
