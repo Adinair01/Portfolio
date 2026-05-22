@@ -7,37 +7,87 @@ import { Calendar, MapPin, ExternalLink } from "lucide-react"
 
 const experiences = [
   {
-    title: "Frontend Developer Intern",
-    company: "Verr Group",
+    title: "SWE Intern",
+    company: "AlgoUniversity",
     location: "Remote",
-    period: "Feb 2025 - July 2025",
+    period: "June 2025 - Present",
     type: "Internship",
     description: [
-      "Developed and optimized responsive websites using HTML, CSS, JavaScript, and React, reducing load time by 30%",
-      "Developed and optimized interactive UI components using React, enhancing functionality and reducing customer support requests by 25%",
-      "Collaborated with cross-functional teams to integrate APIs and ensure seamless front-end performance, accessibility, and cross-browser compatibility, improving user retention by 30%",
+      "Built CodeArena, a full-stack MERN online judge, from the ground up, compiling and running hundreds of code submissions safely",
+      "Engineered sandboxed execution and a submission queue so concurrent submissions run in isolation without one bad infinite loop taking down the system",
+      "Applied distributed systems thinking to keep the judge stable under contest load when many users submit at the same time",
     ],
-    technologies: ["React", "HTML", "CSS", "JavaScript", "API Integration"],
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Docker", "Distributed Systems"],
+    reflection:
+      "CodeArena was where distributed systems stopped being a resume buzzword for me. Watching the queue hold steady while fifty people submit at once during a contest taught me more than any lecture could.",
   },
   {
-    title: "Project Intern",
-    company: "SAIL, BHILAI STEEL PLANT",
-    location: "Bhilai, India",
-    period: "June 2025",
+    title: "Research Intern",
+    company: "IIT Indore",
+    location: "Remote",
+    period: "2026 - Present",
+    type: "Research",
+    description: [
+      "Working under Associate Professor Somnath Dey and PhD scholar Priyanka on a computer vision project, modifying YOLO11 for traffic sign detection",
+      "Built FPDConv from scratch, a custom module fusing pixel-difference convolution with Haar wavelet frequency analysis, and integrated it into the Ultralytics YOLO11 framework",
+      "Benchmarking baseline and modified architectures on GTSDB, running an ablation study across 5 model variants with transfer learning",
+    ],
+    technologies: ["Python", "PyTorch", "YOLO11", "Ultralytics", "Computer Vision", "Object Detection"],
+    reflection:
+      "This is the project that pulled me into research the hard way: realizing a paper's architecture never just drops into an existing codebase, and learning more about rigorous experiment design than any course taught me.",
+  },
+  {
+    title: "Software Engineering Intern",
+    company: "RelationsAI",
+    location: "Remote",
+    period: "Mar 2026 - May 2026",
     type: "Internship",
     description: [
-      "Built Advanced IT Infrastructure Monitoring Dashboard with 90% reduction in manual monitoring time",
-      "Implemented real-time monitoring dashboard for Bhilai Steel Plant",
-      "Created 3-tier monitoring architecture handling CPU, memory, and filesystem utilization",
-      "Deployed production-ready solution serving SAIL Bhilai Steel Plant's IT operations team",
+      "Built a real-time voice AI agent for live phone calls, where half a second of dead air is the difference between natural and broken",
+      "Reduced text-to-speech time-to-first-byte from 691ms to 200ms by switching the TTS provider to ElevenLabs",
+      "Brought the full speech pipeline under 800ms end to end by rethinking how STT and TTS buffer and stream instead of waiting on each other",
+      "Tracked down and fixed a production echo bug that only ever surfaced on live calls, never in testing",
+      "Built the campaign engine now driving 1000+ outbound calls and cutting manual collections work by 60%",
     ],
-    technologies: ["Python", "Streamlit", "Oracle Database", "SSH/Paramiko"],
+    technologies: ["Voice AI", "ElevenLabs", "STT/TTS", "Real-time Streaming", "Latency Optimization", "Node.js"],
+    reflection:
+      "The echo bug taught me to respect the gap between a clean test harness and a live phone line, because it never reproduced anywhere except real calls. Shaving milliseconds off latency sounds trivial until you are the one sitting in the dead air.",
+  },
+  {
+    title: "SDE Intern",
+    company: "Steel Authority of India (SAIL)",
+    location: "Bhilai, CG",
+    period: "Jun 2025 - Jul 2025",
+    type: "Internship",
+    description: [
+      "Consolidated four disconnected team dashboards into a single real-time view that told one coherent story",
+      "Built a Python and Streamlit analytics dashboard on OracleDB with parameterized queries so reports run live instead of being pulled by hand each shift",
+      "Cut manual reporting time by 50% and lifted floor operational performance by 40% through real-time visibility",
+    ],
+    technologies: ["Python", "Streamlit", "OracleDB", "SQL", "Data Analytics"],
+    reflection:
+      "Seeing four teams stare at four dashboards that never talked to each other made the real problem obvious in a way no spec could. The win was less about the code and more about getting everyone looking at the same numbers.",
+  },
+  {
+    title: "Full Stack Developer Intern",
+    company: "Verr Group",
+    location: "Chennai, TN",
+    period: "Feb 2025 - Aug 2025",
+    type: "Internship",
+    description: [
+      "Hardened the client's REST APIs against injection and broken-auth gaps with proper JWT handling and input validation instead of trusting the frontend",
+      "Cut API latency by 35% through caching and cleaning up SQL queries that were doing far more work than they needed to",
+      "Built client-facing React dashboards and shipped in Agile sprints with CI/CD",
+    ],
+    technologies: ["React", "REST APIs", "JWT", "SQL", "Caching", "CI/CD"],
+    reflection:
+      "This was my first time securing APIs that real users' data depended on, and it reset how seriously I take input validation. It also drove home that a fast backend means nothing if the UI rendering it feels sluggish.",
   },
   {
     title: "Founder",
     company: "Webnify Official",
     location: "Chennai, India",
-    period: "2025 - Present",
+    period: "Sep 2025 - Present",
     type: "Founder",
     description: [
       "Founded and leading a web development agency specializing in modern web solutions",
@@ -46,23 +96,6 @@ const experiences = [
       "Leading a team of developers and designers to deliver high-quality digital solutions",
     ],
     technologies: ["React", "Next.js", "Node.js", "MongoDB", "Team Leadership"],
-  },
-  {
-    title: "Freelance Web Developer",
-    company: "Self-Employed",
-    location: "Chennai, India",
-    period: "2024 - Present",
-    type: "Freelance",
-    description: [
-      "Developed website for multispecialty hospital - www.getpharmo.com",
-      "Created school management system - manavargalsms.com for a school in Chennai",
-      "Multiple ongoing projects with focus on responsive design and user experience",
-    ],
-    technologies: ["React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
-    links: [
-      { name: "Pharmo", url: "https://www.getpharmo.com" },
-      { name: "Manavargal SMS", url: "https://manavargalsms.com" },
-    ],
   },
 ]
 
@@ -137,6 +170,12 @@ export default function ExperienceSection() {
                           </li>
                         ))}
                       </ul>
+
+                      {exp.reflection && (
+                        <p className="text-sm italic text-gray-400 leading-relaxed mb-4 pl-3 border-l-2 border-cyan-500/40">
+                          {exp.reflection}
+                        </p>
+                      )}
 
                       <div className="flex flex-wrap gap-2 mb-4">
                         {exp.technologies.map((tech) => (
