@@ -4,26 +4,64 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, Calendar, ZoomIn } from "lucide-react"
+import { Github, Calendar, ZoomIn, ExternalLink } from "lucide-react"
 import { useState } from "react"
 import ImageZoomModal from "./image-zoom-modal"
 
 const projects = [
   {
-    title: "LexiSense",
+    title: "PROD PILOT",
     description:
-      "Intelligent document analysis platform that extracts intelligence from PDFs using advanced AI analytics. Processes domain-specific documents and returns structured, explainable JSON responses with Gemini AI.",
+      "AI-powered Feedback & decision Intelligence engine that helps Product Managers evaluate feasibility, risks, and system impact before engineering commitment.",
     period: "2025",
-    technologies: ["Python", "Gemini AI", "PDF Processing", "Natural Language Processing", "JSON", "Machine Learning"],
-    highlights: [
-      "Advanced AI analytics for document intelligence extraction",
-      "Structured JSON responses with decision logic and confidence scores",
-      "Support for domain-specific documents (insurance, legal, HR, compliance)",
-      "Natural language querying with source references",
+    technologies: [
+      "Python",
+      "Flask",
+      "React.js",
+      "Node.js",
+      "NLP",
+      "scikit-learn",
+      "RBAC",
+      "JWT",
+      "REST APIs",
+      "Microservices",
+      "ML Pipelines",
     ],
-    image: "/projects/lexisense.png",
-    status: "Ongoing",
-    github: "https://github.com/Adinair01/lexisense",
+    highlights: [
+      "Multi-role platform enabling PMs to prioritize features via NLP clustering on raw feedback",
+      "Scalable backend with RBAC, JWT auth, and modular REST APIs powering ML analytics pipelines",
+      "Improved PM efficiency by 40% via sentiment analysis and feature-triage automation",
+    ],
+    image: "/projects/prod-pilot.png",
+    status: "Live",
+    github: "https://github.com/Adinair01/PROD-PILOT",
+    live: "https://prodpilot.vercel.app",
+  },
+  {
+    title: "NetScope",
+    description:
+      "Python packet analyzer, stateful firewall, and anomaly detector with a live web dashboard, featuring live Scapy capture, a YAML rule engine, and a Flask SSE dashboard.",
+    period: "2025",
+    technologies: [
+      "Python",
+      "Scapy",
+      "Flask",
+      "Docker",
+      "Linux",
+      "Raw Sockets",
+      "Multithreading",
+      "TCP/IP",
+      "CI/CD",
+      "Unit Testing",
+    ],
+    highlights: [
+      "Real-time packet capture engine using raw sockets, decoding TCP/IP, UDP, and ICMP headers at the byte level",
+      "Stateful firewall with CIDR 5-tuple matching and TTL connection tracking",
+      "Containerized with Docker, validated on 10K+ live packets, with multithreaded capture optimized to 1000+ packets/sec",
+    ],
+    image: "/projects/netscope.png",
+    status: "Completed",
+    github: "https://github.com/Adinair01/NETSCOPE",
   },
   {
     title: "SkillSage",
@@ -40,6 +78,36 @@ const projects = [
     image: "/projects/skillsage.jpg",
     status: "Ongoing",
     github: "https://github.com/Adinair01/Skill-Sage",
+  },
+  {
+    title: "Sentinel",
+    description: "An AI-powered API firewall that auto-blocks attackers before they reach your code.",
+    period: "2025",
+    technologies: ["Node.js", "Express", "React", "PostgreSQL", "Redis", "JWT", "Anomaly Detection", "Rate Limiting"],
+    highlights: [
+      "Express middleware intercepts every request and routes it through a decision engine that can ALLOW, THROTTLE, or BLOCK",
+      "Behavioral anomaly detection over IP, endpoint, frequency, and user-agent, paired with token-bucket rate limiting",
+      "Admin dashboard for monitoring blocked IPs and traffic, with temporary TTL-based IP blocking",
+    ],
+    image: "/projects/sentinel.png",
+    status: "Ongoing",
+    github: "https://github.com/Adinair01/Sentinel",
+  },
+  {
+    title: "LexiSense",
+    description:
+      "Intelligent document analysis platform that extracts intelligence from PDFs using advanced AI analytics. Processes domain-specific documents and returns structured, explainable JSON responses with Gemini AI.",
+    period: "2025",
+    technologies: ["Python", "Gemini AI", "PDF Processing", "Natural Language Processing", "JSON", "Machine Learning"],
+    highlights: [
+      "Advanced AI analytics for document intelligence extraction",
+      "Structured JSON responses with decision logic and confidence scores",
+      "Support for domain-specific documents (insurance, legal, HR, compliance)",
+      "Natural language querying with source references",
+    ],
+    image: "/projects/lexisense.png",
+    status: "Ongoing",
+    github: "https://github.com/Adinair01/lexisense",
   },
   {
     title: "Sorting Visualizer",
@@ -106,6 +174,11 @@ export default function ProjectsSection() {
                         alt={project.title}
                         className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
+                        onError={(e) => {
+                          if (e.currentTarget.src !== window.location.origin + "/placeholder.svg") {
+                            e.currentTarget.src = "/placeholder.svg"
+                          }
+                        }}
                       />
 
                       {/* Desktop Zoom Overlay */}
@@ -137,7 +210,7 @@ export default function ProjectsSection() {
                       <Badge
                         variant="secondary"
                         className={`${
-                          project.status === "Completed"
+                          project.status === "Completed" || project.status === "Live"
                             ? "bg-green-500/20 text-green-300 border-green-500/30"
                             : "bg-orange-500/20 text-orange-300 border-orange-500/30"
                         }`}
@@ -194,6 +267,19 @@ export default function ProjectsSection() {
                           View Code
                         </a>
                       </Button>
+                      {project.live && (
+                        <Button
+                          asChild
+                          size="sm"
+                          variant="outline"
+                          className="flex-1 border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 hover:text-cyan-200 bg-transparent"
+                        >
+                          <a href={project.live} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-3 h-3 mr-1" />
+                            Live Demo
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </CardContent>
