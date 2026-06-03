@@ -20,6 +20,7 @@ const achievements = [
     bgColor: "bg-yellow-500/20",
     borderColor: "border-yellow-500/30",
     imageStyle: "square",
+    featured: true,
   },
   {
     title: "1st Prize - Agent's Fest Hackathon",
@@ -34,6 +35,34 @@ const achievements = [
     bgColor: "bg-purple-500/20",
     borderColor: "border-purple-500/30",
     image: "/achievements/hackathon-win.png",
+    imageStyle: "default",
+  },
+  {
+    title: "3rd Place - Hackstorm 2026",
+    organization: "SRM x DeepFrog AI",
+    description:
+      "Secured 3rd place at Hackstorm 2026, organized by the Computational Intelligence department at SRM in collaboration with DeepFrog AI, competing as Team Error 200 and taking home a ₹10,000 prize.",
+    date: "2026",
+    type: "Hackathon",
+    icon: Award,
+    color: "from-cyan-400 to-blue-500",
+    bgColor: "bg-cyan-500/20",
+    borderColor: "border-cyan-500/30",
+    image: "/achievements/hackstorm-2026.png",
+    imageStyle: "default",
+  },
+  {
+    title: "3rd Prize - SERBOT Tech Expo",
+    organization: "SRM Institute of Science and Technology",
+    description:
+      "Won 3rd Prize at the SRM SERBOT Tech Expo, organized by the Computational Technology department at SRM, recognized among competing teams across the institute.",
+    date: "2026",
+    type: "Tech Expo",
+    icon: Award,
+    color: "from-green-400 to-emerald-500",
+    bgColor: "bg-green-500/20",
+    borderColor: "border-green-500/30",
+    image: "/achievements/serbot-expo.png",
     imageStyle: "default",
   },
 ]
@@ -76,7 +105,7 @@ export default function AchievementsSection() {
               <Card className="bg-black/40 border-gray-700 hover:border-cyan-500/50 transition-all duration-300 group hover:shadow-2xl hover:shadow-cyan-500/10">
                 <CardContent className="p-6 sm:p-8">
                   {/* Scholarship Achievement - Special Golden Design */}
-                  {index === 0 && (
+                  {achievement.featured && (
                     <motion.div
                       initial={{ scale: 0.9 }}
                       whileInView={{ scale: 1 }}
@@ -129,7 +158,7 @@ export default function AchievementsSection() {
                   )}
 
                   {/* Hackathon Achievement - Image + Details Layout */}
-                  {index === 1 && (
+                  {!achievement.featured && (
                     <motion.div
                       initial={{ scale: 0.95 }}
                       whileInView={{ scale: 1 }}
@@ -147,6 +176,11 @@ export default function AchievementsSection() {
                             alt={achievement.title}
                             className="w-full h-48 sm:h-56 lg:h-64 object-contain bg-gray-800/30 group-hover/image:scale-105 transition-transform duration-300"
                             loading="lazy"
+                            onError={(e) => {
+                              if (e.currentTarget.src !== window.location.origin + "/placeholder.svg") {
+                                e.currentTarget.src = "/placeholder.svg"
+                              }
+                            }}
                           />
 
                           {/* Mobile-Optimized Zoom Overlay */}
